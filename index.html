@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic: The Gathering Sets</title>
+
+    <script src="app.js"></script>
+    <script src="https://unpkg.com/alpinejs" defer></script>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Magic: The Gathering&trade; Set List</h1>
+    </header>
+
+    <main id="set-list" x-data="list">
+        <select x-model="type">
+            <option value="*">All</option>
+            <option value="expansion">Expansions Only</option>
+        </select>
+        <input type="search" x-model="search" placeholder="Search…">
+        <table>
+            <thead>
+                <tr>
+                    <th>Icon</th>
+                    <th>Code</th>
+                    <th>Name</th>
+                    <th>Cards</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <template x-for="set in filteredSets" :key="set.id">
+                    <tr>
+                        <td>
+                            <a
+                                x-bind:href="set.scryfall_uri"
+                                x-bind:title="`View ${set.name} on Scryfall`"
+                                target="_blank">
+                                <img x-bind:src="set.icon_svg_uri" >
+                            </a>
+                        </td>
+                        <td>
+                            <a
+                                x-bind:href="set.scryfall_uri"
+                                x-bind:title="`View ${set.name} on Scryfall`"
+                                x-text="set.code.toUpperCase()"
+                                target="_blank"></a>
+                        </td>
+                        <td x-text="set.name"></td>
+                        <td x-text="set.card_count"></td>
+                        <td x-text="set.released_at"></td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    
+        <button x-on:click="clearCache">Refresh Local Data</button>
+    </main>
+
+    <footer>All names are copyright of Wizards of the Coast. Data provided by <a href="https://scryfall.com/" target="_blank">Scryfall</a>.</footer>
+</body>
+</html>

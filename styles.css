@@ -1,0 +1,40 @@
+body {
+    background-color: #DADADA;
+    color: #333;
+    font-family: monospace;
+    font-size: 18px;
+    padding: 1rem;
+}
+
+table {
+    border: none;
+    border-collapse: collapse;
+    text-align: left;
+    width: 100%;
+}
+
+tbody tr:nth-of-type(odd) {
+    background-color: #CCC;
+}
+
+tbody tr {
+    transition: 0.05s linear background-color;
+}
+
+tbody tr:hover {
+    background-color: #BABABA;
+}
+
+td, th {
+    padding: 0.5rem 1rem 0.5rem 0.5rem;
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+    width: 1.5rem;
+}
+
+a {
+    color: inherit;
+}
